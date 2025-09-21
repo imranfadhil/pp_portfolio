@@ -5,4 +5,5 @@ ipywidgets==8.1.2
 nbformat==5.9.2
 plotly==6.1.1
 quick-pp==0.2.51
+xlrd==2.0.2
 ydata-profiling==4.9.0
