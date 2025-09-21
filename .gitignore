@@ -1,3 +1,10 @@
+**/data/04_project/**
+**/data/*.las
+**/data/*.csv
+**/data/*.xls
+**/data/*.xlsx
+**/outputs/**
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

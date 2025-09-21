@@ -1,0 +1,8 @@
+# Python3.11.0
+dlisio==1.0.3
+ipykernel==6.29.5
+ipywidgets==8.1.2
+nbformat==5.9.2
+plotly==6.1.1
+quick-pp==0.2.51
+ydata-profiling==4.9.0
