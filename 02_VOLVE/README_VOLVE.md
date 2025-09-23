@@ -1,6 +1,11 @@
 # Petrophysical Analysis on the Volve Dataset
 
-This project presents a comprehensive petrophysical analysis of the Volve dataset, leveraging the `quick-pp` library. The workflow spans from initial data ingestion and preparation to advanced petrophysical property estimation, including lithology, porosity, permeability, and water saturation. The analysis is structured across several Jupyter notebooks, each tackling a specific stage of the interpretation process.
+This project presents a quick petrophysical analysis of the Volve dataset, leveraging the `quick-pp` library. The workflow spans from initial data ingestion and preparation to petrophysical property estimation, including lithology, porosity, permeability, and water saturation. The analysis is structured across several Jupyter notebooks, each tackling a specific stage of the interpretation process.
+
+### Geological Background
+
+###  Focused Wells
+
 
 ### 1. Data Ingestion and Preparation (`01_data_handler.ipynb`)
 
