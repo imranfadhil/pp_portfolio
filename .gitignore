@@ -3,6 +3,7 @@
 **/data/*.csv
 **/data/*.xls
 **/data/*.xlsx
+**/data/*.pdf
 **/outputs/**
 
 # Byte-compiled / optimized / DLL files
