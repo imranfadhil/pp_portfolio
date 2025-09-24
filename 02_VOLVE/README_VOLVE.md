@@ -4,8 +4,15 @@ This project presents a quick petrophysical analysis of the Volve dataset, lever
 
 ### Geological Background
 
-###  Focused Wells
+The Volve field, located in block 15/9 of the Norwegian North Sea, is a structural trap on the eastern edge of the South Viking Graben. The trap consists of a westward-tilted fault block, or horst, that formed during Jurassic rifting events. This geological structure created the necessary geometry to accumulate hydrocarbons that migrated into the area.
 
+The primary reservoir is the Middle Jurassic Hugin Formation, a high-quality sandstone with excellent porosity and permeability, deposited in a shallow marine environment. This reservoir contained light oil (around 40° API) with a substantial gas cap. A secondary, lower-quality reservoir also exists in the deeper Sleipner Formation.
+
+Volve's hydrocarbons were sourced from the world-class Upper Jurassic Draupne Formation, an organic-rich shale that generated oil and gas in the deeper parts of the basin. These hydrocarbons migrated upwards into the Volve structure, where they were trapped by an effective seal composed of the overlying Heather and Draupne Formation shales.
+
+The field was discovered in May 1993 by the wildcat well 15/9-19 A, which confirmed the presence of both oil and gas in the Hugin Formation. Following this success, two appraisal sidetracks, 15/9-19 BT2 and 15/9-19 SR, were drilled to delineate the size of the accumulation and define the fluid contacts. This appraisal campaign was critical for assessing the field's commercial viability, and all three initial wells were plugged and abandoned after successfully gathering the required data for development planning.
+
+![alt text](static/volve_field_map.png)
 
 ### 1. Data Ingestion and Preparation (`01_data_handler.ipynb`)
 
@@ -35,22 +42,6 @@ This stage focused on classifying the reservoir into rock types to better charac
 *   **Permeability Modeling**:
     *   The predicted FZI was used to calculate a continuous permeability curve (`PERM`). This method proved superior to traditional porosity-permeability transforms.
     *   The final permeability model, when benchmarked against core permeability (`CPERM`) on well `15-9-19-A`, achieved a high R² score of 0.81.
-
-### 4. Full Petrophysical Interpretation (`05_a_qpp_ss_single.ipynb` & `05_b_qpp_ss_batch.ipynb`)
-
-These notebooks apply the developed workflows to deliver a complete petrophysical interpretation, first for a single well and then in batch mode for all wells in the project.
-
-*   **Single-Well Workflow (`05_a`)**: This notebook provides a detailed, step-by-step interpretation for well `15-9-19-A`, integrating all previous steps:
-    *   Lithology and porosity estimation.
-    *   Permeability estimation using various methods (Coates, Kozeny-Carman, etc.).
-    *   Water Saturation (`SWT`) calculation using the Waxman-Smits model.
-    *   Generation of a comprehensive log plot and a reservoir summary (`ressum`).
-
-*   **Batch Processing Workflow (`05_b`)**: This notebook automates the entire interpretation process for all wells in the Volve project.
-    *   It iteratively loads each well, applies the standardized workflow for log conditioning, lithology, porosity, and water saturation.
-    *   It uses the pre-trained machine learning models from notebook `03` to predict rock type and permeability for all wells.
-    *   The final results, including calculated curves and reservoir summaries, are saved back to the `quick-pp` project.
-    *   Log plots for each well are generated and saved, and a cross-well comparison plot is created for quality control.
 
 ### Summary
 
