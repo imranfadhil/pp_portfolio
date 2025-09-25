@@ -28,8 +28,11 @@ The initial phase focused on consolidating various data sources into a unified p
 This notebook demonstrates the fundamental petrophysical evaluation for a single well (`15-9-19-A`).
 
 *   **Log Conditioning**: The log data was pre-processed, which included badhole flagging and hydrocarbon correction on neutron (NPHI) and density (RHOB) logs to ensure accurate lithology and porosity calculations.
+
 *   **Lithology Estimation**: A Sand-Shale (`ss`) model was used to estimate the volume of sand and clay (`VSAND`, `VCLAY`) from the corrected NPHI and RHOB logs.
 *   **Porosity Calculation**: Total porosity (`PHIT`) was calculated using the neutron-density crossplot method. The results were benchmarked against available core porosity (`CPORE`), showing a good correlation with an R² score of 0.81.
+
+
 
 ### 3. Rock Typing and Permeability Prediction (`03_rock_typing_fzi.ipynb`)
 
