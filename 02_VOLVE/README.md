@@ -39,7 +39,7 @@ This notebook focuses on consolidating disparate data sources into a unified and
 
 ### 2. Lithology and Porosity Estimation
 
-This notebook covers the fundamental petrophysical evaluation for well `15-9-19-A`, establishing the foundation for more advanced modeling.
+This notebook covers the fundamental petrophysical evaluation, establishing the foundation for consequence analysis and modelling.
 
 *   **Log Conditioning**: Raw logs were conditioned including badhole flagging and applying hydrocarbon corrections to the neutron (NPHI) and density (RHOB) logs, which is critical for accurate lithology and porosity calculations in hydrocarbon-bearing zones.
 *   **Lithology Estimation**: A standard Sand-Shale (`ss`) model was applied to estimate the volume of clay (`VCLAY`) from the gamma-ray log, followed by using the corrected NPHI and RHOB logs to determine mineral volumes.
@@ -66,7 +66,7 @@ This stage moves beyond conventional analysis to classify the reservoir into dis
 
 *   **Permeability Modeling**: The predicted FZI, combined with porosity, was used to calculate a continuous permeability curve (`PERM`) using the FZI equation. This physics-informed machine learning approach is far more robust than a simple porosity-permeability transform.
 
-The final permeability model was benchmarked against core permeability (`CPERM`) in well `15-9-19-A`, achieving an excellent **R² score of 0.81**. This high level of accuracy in a typically hard-to-predict property underscores the power of the FZI-based methodology.
+The final permeability model was benchmarked against core permeability (`CPERM`), achieving **R² score of 0.7**.
 
 ![Comparison of estimated permeability with shifted core data](static/permeability_result.png)
 
@@ -94,12 +94,14 @@ This notebook consolidates all petrophysical calculations to generate a comprehe
 
 ![15-9-19-BT2 Result](static/15-9-19-BT2_result.gif)
 
+*Result example from one of the analysed wells: 15-9-19-BT2*
+
 ### Key Insights and Conclusion
 
 This project successfully demonstrates a modern, integrated petrophysical workflow on the public Volve dataset. By combining fundamental petrophysics with machine learning, we developed a robust and consistent reservoir characterization model.
 
 *   **Validated Porosity Model**: The log-derived porosity model was successfully validated against core data, providing a reliable foundation for subsequent calculations.
-*   **Superior Permeability Prediction**: The use of FZI-based rock typing and machine learning proved critical for achieving an accurate permeability prediction. This method effectively captures the geological heterogeneity that controls fluid flow, outperforming traditional methods.
-*   **Scalable Workflow**: The methodology allows for the confident propagation of reservoir properties from cored to uncored wells, enabling the creation of a comprehensive 3D reservoir model for simulation and development planning.
+*   **Permeability Prediction**: The use of FZI-based rock typing and machine learning proved critical for achieving an accurate permeability prediction. This method effectively captures the geological heterogeneity that controls fluid flow.
+*   **Scalable Workflow**: The methodology allows for the confident propagation of reservoir properties from cored to uncored wells for further analysis and modelling.
 
-The final results provide a high-quality, data-driven characterization of the Hugin Formation reservoir, highlighting the value of integrating geological concepts with modern data science techniques.
+The final results offer a detailed, data-driven characterization of the Hugin Formation reservoir, demonstrating a practical approach for integrating geological concepts with modern data science techniques.
