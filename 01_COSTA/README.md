@@ -1,6 +1,7 @@
 # Summary of Petrophysical Analysis
 
-This project performs a complete petrophysical analysis of the COSTA dataset, which appears to be a carbonate reservoir. The workflow starts with data loading and preparation, moves through detailed petrophysical calculations and machine learning model development, and concludes with volume estimation and uncertainty analysis.
+This project performs a complete petrophysical analysis of the COSTA dataset, which appears to be a carbonate reservoir. The workflow starts with data loading and preparation, moves through detailed petrophysical calculations and machine learning model development, and concludes with volume estimation and uncertainty analysis. An article has been published in Petrophysics Journal - Vol. 66, No.5 (October 2025): Pages 807-838 [Enhanced Learning Experience for New Petrophysicists Using Open-Source Carbonate
+Data and Python Programming](https://www.researchgate.net/publication/396099755_Enhanced_Learning_Experience_for_New_Petrophysicists_Using_Open-Source_Carbonate_Data_and_Python_Programming)
 
 Here is a summary of each notebook in order:
 
