@@ -49,7 +49,7 @@ Automated depth correction using `dtw-python` package has been implemented on th
 
 ![Comparison of estimated porosity with shifted core data](static/porosity_result.png)
 
-*A crossplot of log-derived total porosity (PHIT) vs. core porosity (CPORE) for well 15-9-19-A, demonstrating a strong linear relationship.*
+*A crossplot of log-derived total porosity (PHIT) vs. core porosity (CPORE).*
 
 ### 3. Rock Typing and Permeability Prediction
 
