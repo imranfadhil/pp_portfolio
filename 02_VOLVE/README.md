@@ -30,7 +30,7 @@ The analysis is divided into five main stages, each covered by a dedicated Jupyt
 
 ### 1. Data Ingestion and Preparation
 
-The initial phase focused on consolidating disparate data sources into a unified and analysis-ready format.
+This notebook focuses on consolidating disparate data sources into a unified and analysis-ready format.
 
 *   **Well Log Loading**: Loaded and aggregated well log data from multiple LAS files for the key wells in the Volve field.
 *   **Core Data Integration**: Imported Routine Core Analysis (RCA) data (porosity and permeability) from Excel files for wells `15-9-19-A` and `15-9-19-BT2`. The core data was carefully depth-matched and merged with the log data.
@@ -41,13 +41,14 @@ The initial phase focused on consolidating disparate data sources into a unified
 
 This notebook covers the fundamental petrophysical evaluation for well `15-9-19-A`, establishing the foundation for more advanced modeling.
 
-*   **Log Conditioning**: Raw logs were conditioned to correct for environmental effects. This included badhole flagging and applying hydrocarbon corrections to the neutron (NPHI) and density (RHOB) logs, which is critical for accurate lithology and porosity calculations in hydrocarbon-bearing zones.
+*   **Log Conditioning**: Raw logs were conditioned including badhole flagging and applying hydrocarbon corrections to the neutron (NPHI) and density (RHOB) logs, which is critical for accurate lithology and porosity calculations in hydrocarbon-bearing zones.
 *   **Lithology Estimation**: A standard Sand-Shale (`ss`) model was applied to estimate the volume of clay (`VCLAY`) from the gamma-ray log, followed by using the corrected NPHI and RHOB logs to determine mineral volumes.
 *   **Porosity Calculation**: Total porosity (`PHIT`) was calculated using the neutron-density crossplot method. The log-derived porosity was then benchmarked against core porosity (`CPORE`).
 
-The comparison shows a strong correlation, with an **R² score of 0.81**, validating the accuracy of our porosity model.
+Automated depth correction using `dtw-python` package has been implemented on the core data. The following comparison shows a strong correlation, with an **R² score of 0.87**, validating the accuracy of our porosity model.
 
-!Porosity Crossplot
+![Comparison of estimated porosity with shifted core data](static/porosity_result.png)
+
 *A crossplot of log-derived total porosity (PHIT) vs. core porosity (CPORE) for well 15-9-19-A, demonstrating a strong linear relationship.*
 
 ### 3. Rock Typing and Permeability Prediction
@@ -59,35 +60,39 @@ This stage moves beyond conventional analysis to classify the reservoir into dis
 *   **Machine Learning for Prediction**:
     *   **Rock Type Classification**: A classification model was trained to predict the `ROCK_FLAG` from standard well logs (`GR`, `NPHI`, `RHOB`, `RT`). This enables the propagation of rock types to uncored intervals and wells.
     *   **FZI Regression**: A regression model was trained to predict `log(FZI)` using the same logs, augmented with the predicted `ROCK_FLAG` as a feature. This hybrid approach leverages both the continuous nature of logs and the discrete power of rock types.
+![Machine learning based rock typing](static/rocktyping_result.png)
+
+*Porosity-permeability crossplot showing core data segregated by FZI-derived rock types.*
 
 *   **Permeability Modeling**: The predicted FZI, combined with porosity, was used to calculate a continuous permeability curve (`PERM`) using the FZI equation. This physics-informed machine learning approach is far more robust than a simple porosity-permeability transform.
 
 The final permeability model was benchmarked against core permeability (`CPERM`) in well `15-9-19-A`, achieving an excellent **R² score of 0.81**. This high level of accuracy in a typically hard-to-predict property underscores the power of the FZI-based methodology.
 
-!Permeability Crossplot
-*A crossplot of model-predicted permeability (PERM) vs. core permeability (CPERM) for well 15-9-19-A, showing a strong predictive performance across several orders of magnitude.*
+![Comparison of estimated permeability with shifted core data](static/permeability_result.png)
+
+*A crossplot of model-predicted permeability (PERM) vs. core permeability (CPERM), showing a strong predictive performance across several orders of magnitude.*
 
 ### 4. Water Saturation Estimation
 
-This notebook focuses on estimating water saturation (`SWT`) for well `15-9-19-BT2`, a critical parameter for quantifying hydrocarbon volumes.
+This notebook estimates water saturation (`SWT`), a critical parameter for quantifying hydrocarbon volumes.
 
-*   **Methodology**: The water saturation was calculated using the **Archie equation**, a fundamental model for clean sand formations.
+*   **Methodology**: The water saturation was calculated using the **Normalized Waxman-Smits equation**, a fundamental model for shaly sand formations.
 *   **Parameter Estimation**:
-    *   **Formation Water Resistivity (Rw)**: Estimated based on a formation water salinity of 10,000 ppm.
+    *   **Formation Water Resistivity (Rw)**: Estimated based on a formation water salinity of 37,000 ppm.
     *   **Cementation Factor (m)**: A **Pickett plot** was used to determine the appropriate cementation factor, which was found to be **1.9**.
-*   **Calculation**: The `archie_saturation` function was used to compute a continuous water saturation curve. The results were then compared against the existing `SW` curve, showing a good overall agreement and validating the chosen parameters.
+*   **Calculation**: The `normalized_waxman_smits_saturation` function was used to compute a continuous water saturation curve. The results were then compared against the Archie and Waxman-Smits.
+![SWT comparison](static/swt_result.png)
 
 ### 5. Reservoir Summary and Final Plots
 
-The final notebook consolidates all the petrophysical calculations to generate a comprehensive reservoir summary and final plots for all wells in the Volve field.
+This notebook consolidates all petrophysical calculations to generate a comprehensive reservoir summary and final plots for all wells in the Volve field.
 
-*   **Cutoff Analysis**: An automated `cutoffs_analysis` was performed to determine the optimal petrophysical cutoffs for defining net reservoir pay. The analysis identified the following cutoffs based on the 95th percentile:
-    *   **Vshale**: 0.909
-    *   **Porosity (PHIT)**: 0.131
-    *   **Water Saturation (SWT)**: 0.909
+*   **Cutoff Analysis**: An automated `cutoffs_analysis` was performed to determine the optimal petrophysical cutoffs for defining net reservoir pay.
 *   **Reservoir Summary**: A detailed reservoir summary (`ressum`) was calculated for each well and geological zone, quantifying key properties like net thickness, average porosity, and hydrocarbon pore volume. The results were compiled and saved to a CSV file for easy access and further analysis.
 *   **Final Log Plots**: Comprehensive log plots were generated for each well using `plotly_log`, visualizing all the key input and calculated curves (GR, Resistivity, NPHI, RHOB, Porosity, Permeability, Saturation, and Lithology). These plots provide a final, integrated view of the reservoir characterization and were saved as interactive HTML files.
 *   **Cross-Well QA/QC**: Finally, a `quick_compare` plot was generated to visually inspect the consistency of the key logs across all wells, ensuring a high level of confidence in the final interpretation.
+
+![15-9-19-BT2 Result](static/15-9-19-BT2_result.gif)
 
 ### Key Insights and Conclusion
 

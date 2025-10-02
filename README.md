@@ -18,7 +18,21 @@ This project performs a complete petrophysical evaluation of the COSTA dataset, 
 *   **06_a_single & 06_b_batch:** Consolidates the workflow for a single well and then applies it in batch mode to all wells in the project.
 *   **07_volume_uncertainty:** Estimates hydrocarbon volume in place (STOIIP) and performs a Monte Carlo simulation for uncertainty and sensitivity analysis.
 
-For a detailed summary of this project, please see the COSTA Project README.
+For a detailed summary of this project, please see the [COSTA Project README](01_COSTA/README.md).
+
+---
+
+### 2. Volve Dataset - Clastic Reservoir Analysis
+
+This project presents a comprehensive petrophysical analysis of the public Volve dataset, representing a shallow marine sandstone reservoir from the North Sea. The workflow demonstrates an end-to-end process from data ingestion and quality control to advanced rock typing and permeability modeling using machine learning.
+
+*   **01_data_handler.ipynb**: Data loading, cleaning, and consolidation from various sources (LAS, Excel) into a unified project file.
+*   **02_lithology_porosity.ipynb**: Log conditioning and calculation of fundamental petrophysical properties like lithology (VCLAY) and porosity (PHIT).
+*   **03_rock_typing_perm.ipynb**: Advanced reservoir characterization using the Flow Zone Indicator (FZI) for rock typing and machine learning to predict permeability.
+*   **04_saturation.ipynb**: Estimation of water saturation using the Normalized Waxman-Smits equation.
+*   **05_ressum_plot.ipynb**: Generation of final reservoir summary reports and interactive log plots.
+
+For a detailed summary of this project, please see the [Volve Project README](02_VOLVE/README.md).
 
 ---
 
