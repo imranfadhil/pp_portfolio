@@ -2,8 +2,6 @@
 
 This project presents a comprehensive petrophysical analysis of a well from the Norwegian North Sea block 2/5, leveraging the `quick-pp` library. The workflow demonstrates an end-to-end process, from data ingestion and quality control to advanced rock typing and permeability modeling using machine learning. The analysis is structured across several Jupyter notebooks, each tackling a specific stage of the petrophysical interpretation.
 
-The primary goal is to build a robust and predictive reservoir characterization model by integrating well logs, core data, and geological information.
-
 ### Field Background
 
 The well is located in block 2/5 of the Norwegian sector of the North Sea. This block is part of the Greater Ekofisk Area, which includes the giant Ekofisk and Eldfisk fields. The water depth in this area is approximately 70-80 meters. The Ekofisk field, discovered in 1969, was a pivotal discovery that established Norway as a major oil-producing nation.
@@ -31,8 +29,8 @@ The analysis is divided into five main stages, each covered by a dedicated Jupyt
 This notebook focuses on consolidating data sources into a unified and analysis-ready format.
 
 *   **Well Log Loading**: Loaded and aggregated well log data from LAS files for the key well(s) in the study.
-*   **Core Data Integration**: Imported Routine Core Analysis (RCA) data (porosity and permeability) from available core reports. The core data was carefully depth-matched and merged with the log data.
-*   **Facies Data Integration**: Processed and merged lithofacies interpretations from Excel files to provide geological context.
+*   **Core Data Integration**: Imported Routine Core Analysis (RCA) data (porosity and permeability) from available core reports. The core data was depth-matched and merged with the log data.
+*   **Tops Data Integration**:
 *   **Project Creation**: All consolidated data was saved into a single `quick-pp` project file (`NNS_2-5.qppp`), ensuring streamlined and consistent data access for all subsequent analysis steps.
 
 ### 2. Lithology and Porosity Estimation
@@ -44,6 +42,13 @@ This notebook performs essential log conditioning and computes the primary reser
 *   **Lithology Determination**: Given the chalk reservoir, a multi-mineral model is established. The volume of calcite (VCALC) is determined, likely using a solver or crossplot techniques (e.g., Neutron-Density) to account for the primary mineralogy alongside clay content.
 *   **Porosity Calculation (PHIT)**: Total porosity (PHIT) is calculated from the density log, corrected for the effects of clay and matrix mineralogy. The resulting porosity log is then calibrated against the available core porosity measurements to ensure accuracy.
 
+* **Validation against CPORE**
+
+    ![PHIT CPORE Validation](static/PHIT-CPORE_xplot.png)
+
+    - `TODO:` Perform core depth correction.
+    - Align the interpretation with the core description.
+
 ### 3. Rock Typing and Permeability Modeling
 
 This stage focuses on advanced reservoir characterization by identifying hydraulic flow units and building a predictive model for permeability.
@@ -54,27 +59,38 @@ This stage focuses on advanced reservoir characterization by identifying hydraul
     *   **Training**: The model is trained and validated using the core permeability data as the ground truth.
     *   **Prediction**: Once trained, the model generates a continuous, high-resolution permeability log, which is crucial for understanding reservoir performance, especially in a low-matrix-permeability system like this chalk reservoir.
 
+* **Validation against CPORE**
+
+    ![PERM CPERM Validation](static/PERM-CPERM_xplot.png)
+    - `TODO:` Perform core depth correction.
+    - Align the interpretation with the core description.
+
 ### 4. Water Saturation
 
-Water saturation (SWT) is calculated to determine the hydrocarbon content of the reservoir.
+Water saturation (SWT) is calculated to determine the hydrocarbon content of the reservoir. 
+Key evaluation challenges include Low-Resistivity Low-Contrast (LRLC) pay zones, high irreducible water saturation (Swirr), and a fracture-dominated flow system.
 
-*   **Normalized Waxman Smit's Equation**: The Normalized Waxman Smit equation is used to calculate Sw in the clean, porous intervals of the chalk reservoir. This requires defining key parameters: formation water resistivity (Rw), and the Archie's exponents 'a', 'm', and 'n', which are calibrated from core data or local knowledge.
+*   **Normalized Waxman Smit's Equation** equation is used to estimate SWT. 
+* One critical edit was made to the RT log whereby it is divided by 10, assuming decimal place error. This is because the given RT logs are higher by a factor of ten which resulted in low SWT values in the water leg (using the reported formation water salinity of 100,000 ppm). 
+
+* The formation water Rw is estimated at 0.028 ohmm based on formation water salinity of 100,000 ppm at formation temperature of 123 degC. 
+* `TODO:` Revisit the cementation and saturation exponent, m and n, which are currently assumed 2 for both.
 
 ### 5. Reservoir Summary and Visualization
 
 The final notebook consolidates all calculated results into a comprehensive reservoir summary and generates visualizations for interpretation.
 
 *   **Pay Summary (Cutoffs)**: Reservoir pay is quantified by applying petrophysical cutoffs for VCLAY, porosity, and water saturation. This process identifies the net reservoir and net pay intervals.
-*   **Reservoir Flagging**: Boolean flags are created to easily identify reservoir and pay zones throughout the well.
-*   **Log Plot Generation**: A final, interactive log plot is generated using `quick-pp`. This plot displays all key input logs and calculated curves (VCLAY, PHIT, Sw, KLOG), along with core data and reservoir flags. This visualization is essential for quality control, geological correlation, and final interpretation of the reservoir characterization.
+    ![Reservoir Summary](static/2-5_ressum.png)
+
+*   **Log Plot Generation**: A final, interactive log plot is generated using `quick-pp`. This plot displays key input logs and calculated curves (VCLAY, PHIT, SWT, PERM), along with core data. Below is an result example from one of the analysed wells:
+    ![2/5 7 Result](static/2-5-7_result_plot.png)
+
 
 ### 6. Conclusion
 
-This project successfully demonstrates a comprehensive, end-to-end petrophysical workflow for a complex, naturally fractured chalk reservoir in the Norwegian North Sea. By integrating well logs with core data, a robust reservoir model was developed.
+This work demonstrates an end-to-end petrophysical workflow for a complex, naturally fractured chalk reservoir in the Norwegian North Sea.
 
 Key insights from the analysis include:
-*   The successful application of the Flow Zone Indicator (FZI) method to delineate hydraulic flow units, providing a framework for understanding fluid flow in a low-matrix-permeability system.
-*   The development of a machine learning model that accurately predicts a continuous permeability log. This is a critical achievement, as it overcomes the limitations of sparse core data and provides a high-resolution input for reservoir simulation and performance prediction.
-*   The combination of traditional methods (Archie's equation) with a saturation-height function resulted in a geologically realistic fluid distribution model.
-
-Ultimately, this workflow transforms raw data into a full suite of actionable petrophysical properties (VCLAY, PHIT, SWT, PERM), culminating in a clear and interpretable reservoir summary. The resulting detailed characterization is invaluable for future reservoir management, well planning, and simulation studies in this challenging geological setting.
+*   Application of the Flow Zone Indicator (FZI) method to delineate hydraulic flow units, providing a framework for understanding fluid flow in a low-matrix-permeability system.
+*   The development of a machine learning model that predicts a continuous permeability log. This overcomes the limitations of sparse core data and provides a high-resolution input for reservoir simulation and performance prediction.
