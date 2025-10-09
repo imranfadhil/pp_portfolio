@@ -54,7 +54,7 @@ This stage focuses on advanced reservoir characterization by identifying hydraul
 *   **Rock Typing**: The Flow Zone Indicator (FZI) method is used to classify the reservoir into distinct rock types, or "hydraulic flow units." This method leverages the relationship between core porosity and permeability to identify zones with similar fluid flow characteristics.
     ![FZI on PORO PERM](static/2-5_fzi_poroperm.png)
 
-*   **Permeability Modeling**: A machine learning model is trained to predict permeability (KLOG) along the entire logged interval.
+*   **Permeability Modeling**: A machine learning model is trained to predict permeability (PERM) along the entire logged interval.
     *   **Features**: The model uses a combination of raw well logs (e.g., GR, RHOB, NPHI) and derived petrophysical properties (VCLAY, PHIT, FZI) as input features.
     *   **Training**: The model is trained and validated using the core permeability data as the ground truth.
     *   **Prediction**: Once trained, the model generates a continuous, high-resolution permeability log, which is crucial for understanding reservoir performance, especially in a low-matrix-permeability system like this chalk reservoir.
@@ -83,7 +83,7 @@ Key evaluation challenges include Low-Resistivity Low-Contrast (LRLC) pay zones,
 
 The final notebook consolidates all calculated results into a comprehensive reservoir summary and generates visualizations for interpretation.
 
-*   **Pay Summary (Cutoffs)**: Reservoir pay is quantified by applying petrophysical cutoffs for VCLAY, porosity, and water saturation. This process identifies the net reservoir and net pay intervals.
+*   **Pay Summary (Cutoffs)**: Reservoir pay is quantified by applying petrophysical cutoffs for VCLAY, PHIT, and SWT. This process identifies the net reservoir and net pay intervals.
     ![Reservoir Summary](static/2-5_ressum.png)
 
 *   **Log Plot Generation**: A final, interactive log plot is generated using `quick-pp`. This plot displays key input logs and calculated curves (VCLAY, PHIT, SWT, PERM), along with core data. Below is an result example from one of the analysed wells:
