@@ -12,8 +12,6 @@ The hydrocarbons were sourced from the Upper Jurassic Kimmeridge Clay Formation 
 
 Development of the Ekofisk area began in the 1970s and has involved extensive use of water injection for pressure support and improved oil recovery. A significant challenge has been reservoir compaction, which has led to seabed subsidence, requiring extensive platform remediation and redevelopment efforts over the years.
 
-!alt text
-
 ### Analysis Workflow
 
 The analysis is divided into five main stages, each covered by a dedicated Jupyter notebook:
@@ -37,33 +35,38 @@ This notebook focuses on consolidating data sources into a unified and analysis-
 
 This notebook performs essential log conditioning and computes the primary reservoir properties: lithology and porosity.
 
-*   **Log Conditioning**: Raw logs are conditioned to correct for borehole environmental effects and measurement noise. This includes despiking and smoothing to ensure data quality.
-*   **Volume of Clay (VCLAY)**: The volume of clay is estimated primarily from the Gamma Ray (GR) log. The calculation is calibrated against clean and shale baselines to provide a continuous VCLAY curve.
-*   **Lithology Determination**: Given the chalk reservoir, a multi-mineral model is established. The volume of calcite (VCALC) is determined, likely using a solver or crossplot techniques (e.g., Neutron-Density) to account for the primary mineralogy alongside clay content.
+*   **Volume of Clay (VCLAY)**: The volume of clay is estimated primarily from the Neutron Porosity (NPHI) and Bulk Density (RHOB) and supplemented by Gamma Ray (GR) log. The calculation is calibrated against clean and shale end points.
+*   **Lithology Determination**: Given the chalk reservoir, the volume of calcite (VCALC) is determined, using Neutron-Density cross plot to account for the primary mineralogy alongside clay content.
 *   **Porosity Calculation (PHIT)**: Total porosity (PHIT) is calculated from the density log, corrected for the effects of clay and matrix mineralogy. The resulting porosity log is then calibrated against the available core porosity measurements to ensure accuracy.
 
 * **Validation against CPORE**
 
     ![PHIT CPORE Validation](static/PHIT-CPORE_xplot.png)
-
-    - `TODO:` Perform core depth correction.
-    - Align the interpretation with the core description.
+    - `TODO:`
+        - Check whether the reported values are at ambient or overburden condition.
+        - Perform core depth correction.
+        - Align the interpretation with the core description.
 
 ### 3. Rock Typing and Permeability Modeling
 
 This stage focuses on advanced reservoir characterization by identifying hydraulic flow units and building a predictive model for permeability.
 
 *   **Rock Typing**: The Flow Zone Indicator (FZI) method is used to classify the reservoir into distinct rock types, or "hydraulic flow units." This method leverages the relationship between core porosity and permeability to identify zones with similar fluid flow characteristics.
+    ![FZI on PORO PERM](static/2-5_fzi_poroperm.png)
+
 *   **Permeability Modeling**: A machine learning model is trained to predict permeability (KLOG) along the entire logged interval.
     *   **Features**: The model uses a combination of raw well logs (e.g., GR, RHOB, NPHI) and derived petrophysical properties (VCLAY, PHIT, FZI) as input features.
     *   **Training**: The model is trained and validated using the core permeability data as the ground truth.
     *   **Prediction**: Once trained, the model generates a continuous, high-resolution permeability log, which is crucial for understanding reservoir performance, especially in a low-matrix-permeability system like this chalk reservoir.
+    
 
-* **Validation against CPORE**
+* **Validation against CPERM**
 
     ![PERM CPERM Validation](static/PERM-CPERM_xplot.png)
-    - `TODO:` Perform core depth correction.
-    - Align the interpretation with the core description.
+    - `TODO:`
+        - Check whether the reported values are at ambient or overburden condition.
+        - Perform core depth correction.
+        - Align the interpretation with the core description.
 
 ### 4. Water Saturation
 
@@ -94,3 +97,4 @@ This work demonstrates an end-to-end petrophysical workflow for a complex, natur
 Key insights from the analysis include:
 *   Application of the Flow Zone Indicator (FZI) method to delineate hydraulic flow units, providing a framework for understanding fluid flow in a low-matrix-permeability system.
 *   The development of a machine learning model that predicts a continuous permeability log. This overcomes the limitations of sparse core data and provides a high-resolution input for reservoir simulation and performance prediction.
+* ...
