@@ -60,17 +60,18 @@ This stage moves beyond conventional analysis to classify the reservoir into dis
 *   **Machine Learning for Prediction**:
     *   **Rock Type Classification**: A classification model was trained to predict the `ROCK_FLAG` from standard well logs (`GR`, `NPHI`, `RHOB`, `RT`). This enables the propagation of rock types to uncored intervals and wells.
     *   **FZI Regression**: A regression model was trained to predict `log(FZI)` using the same logs, augmented with the predicted `ROCK_FLAG` as a feature. This hybrid approach leverages both the continuous nature of logs and the discrete power of rock types.
-![Machine learning based rock typing](static/rocktyping_result.png)
 
-*Porosity-permeability crossplot showing core data segregated by FZI-derived rock types.*
+    ![Machine learning based rock typing](static/rocktyping_result.png)
+
+    *Porosity-permeability crossplot showing core data segregated by FZI-derived rock types.*
 
 *   **Permeability Modeling**: The predicted FZI, combined with porosity, was used to calculate a continuous permeability curve (`PERM`) using the FZI equation. This physics-informed machine learning approach is far more robust than a simple porosity-permeability transform.
 
-The final permeability model was benchmarked against core permeability (`CPERM`), achieving **R² score of 0.7**.
+    The final permeability model was benchmarked against core permeability (`CPERM`), achieving **R² score of 0.7**.
 
-![Comparison of estimated permeability with shifted core data](static/permeability_result.png)
+    ![Comparison of estimated permeability with shifted core data](static/permeability_result.png)
 
-*A crossplot of model-predicted permeability (PERM) vs. core permeability (CPERM), showing a strong predictive performance across several orders of magnitude.*
+    *A crossplot of model-predicted permeability (PERM) vs. core permeability (CPERM), showing a strong predictive performance across several orders of magnitude.*
 
 ### 4. Water Saturation Estimation
 
@@ -81,7 +82,8 @@ This notebook estimates water saturation (`SWT`), a critical parameter for quant
     *   **Formation Water Resistivity (Rw)**: Estimated based on a formation water salinity of 37,000 ppm.
     *   **Cementation Factor (m)**: A **Pickett plot** was used to determine the appropriate cementation factor, which was found to be **1.9**.
 *   **Calculation**: The `normalized_waxman_smits_saturation` function was used to compute a continuous water saturation curve. The results were then compared against the Archie and Waxman-Smits.
-![SWT comparison](static/swt_result.png)
+
+    ![SWT comparison](static/swt_result.png)
 
 ### 5. Reservoir Summary and Final Plots
 

@@ -28,8 +28,18 @@ This notebook focuses on consolidating data sources into a unified and analysis-
 
 *   **Well Log Loading**: Loaded and aggregated well log data from LAS files for the key well(s) in the study.
 *   **Core Data Integration**: Imported Routine Core Analysis (RCA) data (porosity and permeability) from available core reports. The core data was depth-matched and merged with the log data.
-*   **Tops Data Integration**:
+*   **Tops Data Integration**
 *   **Project Creation**: All consolidated data was saved into a single `quick-pp` project file (`NNS_2-5.qppp`), ensuring streamlined and consistent data access for all subsequent analysis steps.
+
+* **Wells** being analysed:
+    1. **2/5-1** (1970)
+    2. **2/5-2** (1971)
+    3. **2/5-3** (Jun 1972)
+    4. **2/5-4** (Oct 1972)
+    5. **2/5-6** (1978)
+    6. **2/5-7** (1984)
+    
+    ![2-4 Map](static/2-5_map.png)
 
 ### 2. Lithology and Porosity Estimation
 
@@ -73,11 +83,11 @@ This stage focuses on advanced reservoir characterization by identifying hydraul
 Water saturation (SWT) is calculated to determine the hydrocarbon content of the reservoir. 
 Key evaluation challenges include Low-Resistivity Low-Contrast (LRLC) pay zones, high irreducible water saturation (Swirr), and a fracture-dominated flow system.
 
-*   **Normalized Waxman Smit's Equation** equation is used to estimate SWT. 
-* One critical edit was made to the RT log whereby it is divided by 10, assuming decimal place error. This is because the given RT logs are higher by a factor of ten which resulted in low SWT values in the water leg (using the reported formation water salinity of 100,000 ppm). 
+*   **Waxman Smit's Equation** equation is used to estimate SWT. 
+* One critical edit was made to the RT log for 3, 4 and 7 wells whereby it is divided by 10, assuming decimal place error. This is because the given RT logs seems higher by a factor of ten which resulted in low SWT values in the water leg (using the reported formation water salinity of 100,000 ppm). 
 
 * The formation water Rw is estimated at 0.028 ohmm based on formation water salinity of 100,000 ppm at formation temperature of 123 degC. 
-* `TODO:` Revisit the cementation and saturation exponent, m and n, which are currently assumed 2 for both.
+* `TODO:` Revisit the cementation and saturation exponent, m and n, which are currently assumed 2 for both. Assuming fix m and n values introduces uncertainty and does not address the heterogeneity of the formation.
 
 ### 5. Reservoir Summary and Visualization
 
@@ -89,6 +99,8 @@ The final notebook consolidates all calculated results into a comprehensive rese
 *   **Log Plot Generation**: A final, interactive log plot is generated using `quick-pp`. This plot displays key input logs and calculated curves (VCLAY, PHIT, SWT, PERM), along with core data. Below is an result example from one of the analysed wells:
     ![2/5 7 Result](static/2-5-7_result_plot.png)
 
+    Stick plot focusing on the Tor formation:
+    ![2/5 Stick Plot](static/2-5_Tor_stickplot.png)
 
 ### 6. Conclusion
 
