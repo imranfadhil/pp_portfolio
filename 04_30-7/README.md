@@ -1,6 +1,6 @@
 # Summary of Petrophysical Analysis for Block 30/7
 
-The analysis follows a comprehensive petrophysical workflow, starting from data loading and quality control, moving through lithology, porosity, permeability, and saturation modeling, and concluding with reservoir summary and visualization. The quick-pp library is central to the entire process.
+The analysis follows a petrophysical workflow, starting from data loading and quality control, moving through lithology, porosity, permeability, and saturation modeling, and concluding with reservoir summary and visualization. The quick-pp library is central to the entire process.
 
 Here is a step-by-step breakdown of the workflow:
 
@@ -66,7 +66,6 @@ The analysis is performed separately on clastic (sandshale) and carbonate interv
     *   Comprehensive multi-track log plots are generated for each well, displaying input logs, interpreted lithology, porosity, permeability, and saturation curves.
     *   A field-wide stick plot is created to visualize fluid contacts (e.g., `ODT`, `WUT`) and their consistency across the wells.
 
-This structured workflow ensures that the final petrophysical properties are well-calibrated to core data and consistently applied across the entire field, providing a robust basis for subsequent reservoir modeling and volumetric analysis.
 
 `TODO`
 1. Add insights from each sections.
