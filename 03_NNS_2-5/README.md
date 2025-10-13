@@ -1,16 +1,12 @@
-# Petrophysical Analysis of a North Sea Block 2/5
+# Petrophysical Analysis of a Block 2/5 (North Sea, UK)
 
-This project presents a comprehensive petrophysical analysis of a well from the Norwegian North Sea block 2/5, leveraging the `quick-pp` library. The workflow demonstrates an end-to-end process, from data ingestion and quality control to advanced rock typing and permeability modeling using machine learning. The analysis is structured across several Jupyter notebooks, each tackling a specific stage of the petrophysical interpretation.
+This project presents a comprehensive petrophysical analysis of a well from the UK North Sea block 2/5, leveraging the `quick-pp` library. The workflow demonstrates an end-to-end process, from data ingestion and quality control to advanced rock typing and permeability modeling using machine learning. The analysis is structured across several Jupyter notebooks, each tackling a specific stage of the petrophysical interpretation.
 
 ### Field Background
 
-The well is located in block 2/5 of the Norwegian sector of the North Sea. This block is part of the Greater Ekofisk Area, which includes the giant Ekofisk and Eldfisk fields. The water depth in this area is approximately 70-80 meters. The Ekofisk field, discovered in 1969, was a pivotal discovery that established Norway as a major oil-producing nation.
+Block 2/5, located in the UK's East Shetland Basin, is geologically significant as the site of the Heather oil field. Its foundation is the Heather Terrace, a large, tilted fault block on the western margin of the Viking Graben. This structure was created by intense rifting during the Jurassic period, which faulted and tilted the rock layers, forming a perfect structural trap for migrating oil and gas.
 
-The reservoirs in this region are unique, consisting of naturally fractured chalk of Late Cretaceous (Tor Formation) and early Paleocene (Ekofisk Formation) age. These reservoirs are characterized by high porosity (up to 40-50%) but very low matrix permeability (<1 mD). Production is heavily dependent on the network of natural fractures. The reservoir depth is around 3000 meters.
-
-The hydrocarbons were sourced from the Upper Jurassic Kimmeridge Clay Formation (equivalent to the Draupne Formation), a world-class source rock. Oil and gas migrated into the chalk structures and were trapped by overlying fine-grained Paleocene and Eocene sediments.
-
-Development of the Ekofisk area began in the 1970s and has involved extensive use of water injection for pressure support and improved oil recovery. A significant challenge has been reservoir compaction, which has led to seabed subsidence, requiring extensive platform remediation and redevelopment efforts over the years.
+The block's success as a hydrocarbon province stems from a classic petroleum system. The source rock is the organic-rich Upper Jurassic Kimmeridge Clay Formation, which generated hydrocarbons after being subjected to heat and pressure. These hydrocarbons migrated into the porous sandstones of the Middle Jurassic Heather Formation, the primary reservoir. This accumulation was then contained by an impermeable cap rock of younger Cretaceous mudstones, which prevented the oil and gas from escaping.
 
 ### Analysis Workflow
 
@@ -84,10 +80,11 @@ Water saturation (SWT) is calculated to determine the hydrocarbon content of the
 Key evaluation challenges include Low-Resistivity Low-Contrast (LRLC) pay zones, high irreducible water saturation (Swirr), and a fracture-dominated flow system.
 
 *   **Waxman Smit's Equation** equation is used to estimate SWT. 
-* One critical edit was made to the RT log for 3, 4 and 7 wells whereby it is divided by 10, assuming decimal place error. This is because the given RT logs seems higher by a factor of ten which resulted in low SWT values in the water leg (using the reported formation water salinity of 100,000 ppm). 
 
-* The formation water Rw is estimated at 0.028 ohmm based on formation water salinity of 100,000 ppm at formation temperature of 123 degC. 
-* `TODO:` Revisit the cementation and saturation exponent, m and n, which are currently assumed 2 for both. Assuming fix m and n values introduces uncertainty and does not address the heterogeneity of the formation.
+* The formation water Rw is estimated at 0.15 ohmm based on formation water salinity of 15,000 ppm at formation temperature of 123 degC. 
+* `TODO:` 
+    - Revisit the cementation and saturation exponent, m and n, which are currently assumed 2 for both.
+    - Find formation tops and incorporate into the analysis.
 
 ### 5. Reservoir Summary and Visualization
 
@@ -104,7 +101,7 @@ The final notebook consolidates all calculated results into a comprehensive rese
 
 ### 6. Conclusion
 
-This work demonstrates an end-to-end petrophysical workflow for a complex, naturally fractured chalk reservoir in the Norwegian North Sea.
+This work demonstrates an end-to-end petrophysical workflow;
 
 Key insights from the analysis include:
 *   Application of the Flow Zone Indicator (FZI) method to delineate hydraulic flow units, providing a framework for understanding fluid flow in a low-matrix-permeability system.
