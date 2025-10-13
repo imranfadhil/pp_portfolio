@@ -42,7 +42,7 @@ This notebook focuses on consolidating data sources into a unified and analysis-
 This notebook performs essential log conditioning and computes the primary reservoir properties: lithology and porosity.
 
 *   **Volume of Clay (VCLAY)**: The volume of clay is estimated primarily from the Neutron Porosity (NPHI) and Bulk Density (RHOB) and supplemented by Gamma Ray (GR) log. The calculation is calibrated against clean and shale end points.
-*   **Lithology Determination**: Given the chalk reservoir, the volume of calcite (VCALC) is determined, using Neutron-Density cross plot to account for the primary mineralogy alongside clay content.
+*   **Lithology Determination**: The lithology volumes (VCLAY, VSAND) are determined using Neutron-Density cross plot.
 *   **Porosity Calculation (PHIT)**: Total porosity (PHIT) is calculated from the density log, corrected for the effects of clay and matrix mineralogy. The resulting porosity log is then calibrated against the available core porosity measurements to ensure accuracy.
 
 * **Validation against CPORE**
