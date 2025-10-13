@@ -28,12 +28,12 @@ This notebook focuses on consolidating data sources into a unified and analysis-
 *   **Project Creation**: All consolidated data was saved into a single `quick-pp` project file (`NNS_2-5.qppp`), ensuring streamlined and consistent data access for all subsequent analysis steps.
 
 * **Wells** being analysed:
-    1. **2/5-1** (1970)
-    2. **2/5-2** (1971)
-    3. **2/5-3** (Jun 1972)
-    4. **2/5-4** (Oct 1972)
-    5. **2/5-6** (1978)
-    6. **2/5-7** (1984)
+    1. **2/5-1** (Nov 1973)
+    2. **2/5-2** (Mar 1974)
+    3. **2/5-3** (May 1974)
+    4. **2/5-4** (Aug 1974)
+    5. **2/5-6** (Nov 1974)
+    6. **2/5-7** (Aug 1975)
     
     ![2-4 Map](static/2-5_map.png)
 
