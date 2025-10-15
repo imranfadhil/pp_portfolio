@@ -1,3 +1,5 @@
+# ~Work in Progress~
+
 # Petrophysical Analysis of a North Sea Block 30/7
 
 This project presents a comprehensive petrophysical analysis of a well from the Norwegian North Sea block 30/7, leveraging the `quick-pp` library. The workflow demonstrates an end-to-end process, from data ingestion and quality control to advanced rock typing and permeability modeling using machine learning. The analysis is structured across several Jupyter notebooks, each tackling a specific stage of the petrophysical interpretation.

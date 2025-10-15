@@ -8,7 +8,7 @@ The primary tool used for these analyses is the `quick_pp` Python package, suppl
 
 ### 1. COSTA Dataset - Carbonate Reservoir Analysis
 
-This project performs a complete petrophysical evaluation of the COSTA dataset, which represents a complex carbonate reservoir. The workflow is broken down into a series of Jupyter notebooks, each tackling a specific stage of the analysis.
+This project performs a complete petrophysical evaluation of the COSTA dataset, which represents a carbonate reservoir. The workflow is broken down into a series of Jupyter notebooks, each tackling a specific stage of the analysis.
 
 *   **01_data_handler:** Loads well data (`.las` files) into a centralized `quick_pp` Project.
 *   **02_EDA:** Performs Exploratory Data Analysis (EDA) with `ydata-profiling` to assess data quality and distributions.
