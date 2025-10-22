@@ -2,6 +2,8 @@
 
 # Petrophysical Analysis of UK North Sea Block 22/30
 
+*Contains information provided by the North Sea Transition Authority and/or other third parties.*
+
 ### Geological Background
 Block 22/30 is situated in the Central Graben of the UK Central North Sea, an area renowned for its High-Pressure/High-Temperature (HPHT) fields and long history as a hydrocarbon province. The primary reservoirs were deposited in diverse marine environments: the Upper Jurassic Fulmar Formation formed in shallow marine shoreface settings, heavily reworked by storms and tides, while the Paleocene Forties Sandstone Member represents a deep-water submarine fan system, characterized by thinner, more distal sheet-like lobes in this specific block.
 

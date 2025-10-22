@@ -2,6 +2,8 @@
 
 # Petrophysical Analysis of Block 2/5 (North Sea, UK)
 
+*Contains information provided by the North Sea Transition Authority and/or other third parties.*
+
 This project presents a comprehensive petrophysical analysis of a well from the UK North Sea block 2/5, leveraging the `quick-pp` library. The workflow demonstrates an end-to-end process, from data ingestion and quality control to advanced rock typing and permeability modeling using machine learning. The analysis is structured across several Jupyter notebooks, each tackling a specific stage of the petrophysical interpretation.
 
 ### Field Background
