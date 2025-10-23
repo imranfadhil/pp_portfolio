@@ -5,6 +5,7 @@
 **/data/*.xlsx
 **/data/*.pdf
 **/outputs/**
+**/quick_pp.db*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
