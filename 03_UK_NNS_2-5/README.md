@@ -65,10 +65,10 @@ This stage focuses on advanced reservoir characterization by identifying hydraul
     ![FZI on PORO PERM](static/2-5_fzi_poroperm.png)
 
 *   **Permeability Modeling**: A machine learning model is trained to predict permeability (PERM) along the entire logged interval.
+    *   **Model**: A sequential Random Forest Classification and Regression algorithm was selected for its high performance and ability to capture complex non-linear relationships between log data and permeability.
     *   **Features**: The model uses a combination of raw well logs (e.g., GR, RHOB, NPHI) and derived petrophysical properties (VCLAY, PHIT, FZI) as input features.
     *   **Training**: The model is trained and validated using the core permeability data as the ground truth.
-    *   **Prediction**: Once trained, the model generates a continuous, high-resolution permeability log, which is crucial for understanding reservoir performance, especially in a low-matrix-permeability system like this chalk reservoir.
-    
+    *   **Prediction**: Once trained, the model generates a continuous, high-resolution permeability log, which is crucial for understanding reservoir performance.
 
 * **Validation against CPERM**
 

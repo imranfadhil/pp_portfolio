@@ -4,7 +4,7 @@
 
 *Contains information provided by the North Sea Transition Authority and/or other third parties.*
 
-This project presents a comprehensive petrophysical analysis of a well from the Norwegian North Sea block 30/7, leveraging the `quick-pp` library. The workflow demonstrates an end-to-end process, from data ingestion and quality control to advanced rock typing and permeability modeling using machine learning. The analysis is structured across several Jupyter notebooks, each tackling a specific stage of the petrophysical interpretation.
+This project presents a comprehensive petrophysical analysis of wells from the **UK North Sea block 30/7**, leveraging the `quick-pp` library. The workflow demonstrates an end-to-end process, from data ingestion and quality control to advanced rock typing and permeability modeling using machine learning. The analysis is structured across several Jupyter notebooks, each tackling a specific stage of the petrophysical interpretation.
 
 ### Field Background
 
@@ -45,7 +45,7 @@ This notebook focuses on consolidating data sources into a unified and analysis-
 This notebook performs essential log conditioning and computes the primary reservoir properties: lithology and porosity.
 
 *   **Volume of Clay (VCLAY)**: The volume of clay is estimated primarily from the Neutron Porosity (NPHI) and Bulk Density (RHOB) and supplemented by Gamma Ray (GR) log. The calculation is calibrated against clean and shale end points.
-*   **Lithology Determination**: Given the chalk reservoir, the volume of calcite (VCALC) is determined, using Neutron-Density cross plot to account for the primary mineralogy alongside clay content.
+*   **Lithology Determination**: The primary lithology is sandstone. Volumes of clay (VCLAY) and other minerals (e.g., calcite cement) are determined using a multi-mineral solver or cross-plots (e.g., Neutron-Density) to account for the formation's mineralogy.
 *   **Porosity Calculation (PHIT)**: Total porosity (PHIT) is calculated from the density log, corrected for the effects of clay and matrix mineralogy. The resulting porosity log is then calibrated against the available core porosity measurements to ensure accuracy.
 
 * **Validation against CPORE**
@@ -66,7 +66,7 @@ This stage focuses on advanced reservoir characterization by identifying hydraul
 *   **Permeability Modeling**: A machine learning model is trained to predict permeability (PERM) along the entire logged interval.
     *   **Features**: The model uses a combination of raw well logs (e.g., GR, RHOB, NPHI) and derived petrophysical properties (VCLAY, PHIT, FZI) as input features.
     *   **Training**: The model is trained and validated using the core permeability data as the ground truth.
-    *   **Prediction**: Once trained, the model generates a continuous, high-resolution permeability log, which is crucial for understanding reservoir performance, especially in a low-matrix-permeability system like this chalk reservoir.
+    *   **Prediction**: Once trained, the model generates a continuous, high-resolution permeability log, which is crucial for understanding reservoir performance. This model predicts matrix permeability; fracture permeability must be considered separately.
     
 
 * **Validation against CPERM**
@@ -82,8 +82,7 @@ This stage focuses on advanced reservoir characterization by identifying hydraul
 Water saturation (SWT) is calculated to determine the hydrocarbon content of the reservoir. 
 Key evaluation challenges include Low-Resistivity Low-Contrast (LRLC) pay zones, high irreducible water saturation (Swirr), and a fracture-dominated flow system.
 
-*   **Waxman Smit's Equation** equation is used to estimate SWT. 
-* One critical edit was made to the RT log for 3, 4 and 7 wells whereby it is divided by 10, assuming decimal place error. This is because the given RT logs seems higher by a factor of ten which resulted in low SWT values in the water leg (using the reported formation water salinity of 100,000 ppm). 
+*   **Waxman Smit's Equation** is used to estimate SWT. This shaly sand model was specifically chosen to account for the additional conductivity from clay-bound water, which is critical for accurately calculating saturation in the identified LRLC pay zones.
 
 * The formation water Rw is estimated at 0.028 ohmm based on formation water salinity of 100,000 ppm at formation temperature of 123 degC. 
 * `TODO:` Revisit the cementation and saturation exponent, m and n, which are currently assumed 2 for both. Assuming fix m and n values introduces uncertainty and does not address the heterogeneity of the formation.
