@@ -34,11 +34,11 @@ This notebook focuses on consolidating data sources into a unified and analysis-
 * **Wells** being analysed:
     1. **30/7a-1** (Mar 1981)
     2. **30/7a-2** (Jan 1983)
-    5. **30/7a-6** (Feb 1985)
-    6. **30/7a-7** (Mar 1986)
-    6. **30/7a-8** (Jan 1989)
+    3. **30/7a-6** (Feb 1985)
+    4. **30/7a-7** (Mar 1986)
+    5. **30/7a-8** (Jan 1989)
     
-    ![2-4 Map](static/2-5_map.png)
+    ![Well Location Map](static/2-5_map.png)
 
 ### 2. Lithology and Porosity Estimation
 
@@ -47,7 +47,7 @@ This notebook performs essential log conditioning and computes the primary reser
 *   **Volume of Clay (VCLAY)**: The volume of clay is estimated primarily from the Neutron Porosity (NPHI) and Bulk Density (RHOB) and supplemented by Gamma Ray (GR) log. The calculation is calibrated against clean and shale end points.
 *   **Lithology Determination**: The primary lithology is sandstone. Volumes of clay (VCLAY) and other minerals (e.g., calcite cement) are determined using a multi-mineral solver or cross-plots (e.g., Neutron-Density) to account for the formation's mineralogy.
 *   **Porosity Calculation (PHIT)**: Total porosity (PHIT) is calculated from the density log, corrected for the effects of clay and matrix mineralogy. The resulting porosity log is then calibrated against the available core porosity measurements to ensure accuracy.
-
+ 
 * **Validation against CPORE**
 
     ![PHIT CPORE Validation](static/PHIT-CPORE_xplot.png)
@@ -55,6 +55,9 @@ This notebook performs essential log conditioning and computes the primary reser
         - Check whether the reported values are at ambient or overburden condition.
         - Perform core depth correction.
         - Align the interpretation with the core description.
+        - **Critical for HPHT:** Core data is likely reported at ambient conditions. A correction to reservoir effective stress (overburden) conditions is required before calibration.
+        - Perform final core depth shifting.
+        - Align final interpretation with core descriptions and photos.
 
 ### 3. Rock Typing and Permeability Modeling
 
@@ -62,6 +65,7 @@ This stage focuses on advanced reservoir characterization by identifying hydraul
 
 *   **Rock Typing**: The Flow Zone Indicator (FZI) method is used to classify the reservoir into distinct rock types, or "hydraulic flow units." This method leverages the relationship between core porosity and permeability to identify zones with similar fluid flow characteristics.
     ![FZI on PORO PERM](static/30-7_fzi_poroperm.png)
+    > The Flow Zone Indicator (FZI) method was chosen to classify these heterogeneous sandstones into hydraulic flow units (HFUs). Based on the Kozeny-Carman equation, FZI groups rocks by pore-throat geometry rather than just lithology, providing a more accurate framework for predicting fluid flow.
 
 *   **Permeability Modeling**: A machine learning model is trained to predict permeability (PERM) along the entire logged interval.
     *   **Features**: The model uses a combination of raw well logs (e.g., GR, RHOB, NPHI) and derived petrophysical properties (VCLAY, PHIT, FZI) as input features.
@@ -76,6 +80,9 @@ This stage focuses on advanced reservoir characterization by identifying hydraul
         - Check whether the reported values are at ambient or overburden condition.
         - Perform core depth correction.
         - Align the interpretation with the core description.
+        - **Critical for HPHT:** Core data is likely reported at ambient conditions. A correction to reservoir effective stress (overburden) conditions is required before model training.
+        - Perform final core depth shifting.
+        - Align final interpretation with core descriptions and photos.
 
 ### 4. Water Saturation
 
@@ -102,9 +109,12 @@ The final notebook consolidates all calculated results into a comprehensive rese
 
 ### 6. Conclusion
 
-This work demonstrates an end-to-end petrophysical workflow for a complex, naturally fractured chalk reservoir in the Norwegian North Sea.
+This work demonstrates an end-to-end petrophysical workflow for the complex HPHT sandstone reservoirs of UK North Sea block 30/7a.
 
 Key insights from the analysis include:
 *   Application of the Flow Zone Indicator (FZI) method to delineate hydraulic flow units, providing a framework for understanding fluid flow in a low-matrix-permeability system.
 *   The development of a machine learning model that predicts a continuous permeability log. This overcomes the limitations of sparse core data and provides a high-resolution input for reservoir simulation and performance prediction.
+*   Accurate saturation modeling in a Low-Resistivity Low-Contrast (LRLC) environment was achieved by using the Waxman-Smit equation, which accounts for the conductive effects of clay.
 * ...
+
+This study provides a robust and reproducible petrophysical characterization that forms a critical foundation for subsequent geological modeling and reservoir engineering studies in this challenging but prolific block.
