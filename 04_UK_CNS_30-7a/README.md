@@ -1,10 +1,10 @@
 # ~Work in Progress~
 
-# Petrophysical Analysis of UK North Sea Block 30/7
+# Petrophysical Analysis of UK North Sea Block 30/7a
 
 *Contains information provided by the North Sea Transition Authority and/or other third parties.*
 
-This project presents a comprehensive petrophysical analysis of wells from the **UK North Sea block 30/7**, leveraging the `quick-pp` library. The workflow demonstrates an end-to-end process, from data ingestion and quality control to advanced rock typing and permeability modeling using machine learning. The analysis is structured across several Jupyter notebooks, each tackling a specific stage of the petrophysical interpretation.
+This project presents a comprehensive petrophysical analysis of wells from the **UK North Sea block 30/7a**, leveraging the `quick-pp` library. The workflow demonstrates an end-to-end process, from data ingestion and quality control to advanced rock typing and permeability modeling using machine learning. The analysis is structured across several Jupyter notebooks, each tackling a specific stage of the petrophysical interpretation.
 
 ### Field Background
 
@@ -29,7 +29,7 @@ This notebook focuses on consolidating data sources into a unified and analysis-
 *   **Well Log Loading**: Loaded and aggregated well log data from LAS files for the key well(s) in the study.
 *   **Core Data Integration**: Imported Routine Core Analysis (RCA) data (porosity and permeability) from available core reports. The core data was depth-matched and merged with the log data.
 *   **Tops Data Integration**
-*   **Project Creation**: All consolidated data was saved into a single `quick-pp` project file (`30-7.qppp`), ensuring streamlined and consistent data access for all subsequent analysis steps.
+*   **Project Creation**: All consolidated data was saved into a single `quick-pp` project file (`30-7a.qppp`), ensuring streamlined and consistent data access for all subsequent analysis steps.
 
 * **Wells** being analysed:
     1. **30/7a-1** (Mar 1981)
