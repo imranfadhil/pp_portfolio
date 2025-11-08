@@ -6,7 +6,7 @@ The primary goal is to build a robust and predictive reservoir characterization 
 
 ### Field Background
 
-The Volve field, located in block 15/9, central part of the North Sea, five kilometres north of the Sleipner Øst field. The water depth is 80 metres. Volve was discovered in 1993, and the plan for development and operation (PDO) was approved in 2005. The field was developed with a jack-up processing and drilling facility. The vessel "Navion Saga" was used for storing stabilised oil. The production started in 2008.
+The Volve field, located in block 15/9, central part of the North Sea, five kilometres north of the Sleipner Øst field. The water depth is 80 metres. Volve was discovered in 1993, and the plan for development and operation (PDO) was approved in 2005 and the production started in 2008.
 
 Volve produced oil from sandstone of Middle Jurassic age in the Hugin Formation with depositional environment of near shore, shallow marine sandstones with the occasional influence of continental fluviodeltaic conditions. The reservoir is at a depth of 2700-3100 metres. The western part of the structure is heavily faulted and communication across the faults is uncertain. 
 
@@ -33,7 +33,7 @@ The analysis is divided into five main stages, each covered by a dedicated Jupyt
 This notebook focuses on consolidating disparate data sources into a unified and analysis-ready format.
 
 *   **Well Log Loading**: Loaded and aggregated well log data from multiple LAS files for the key wells in the Volve field.
-*   **Core Data Integration**: Imported Routine Core Analysis (RCA) data (porosity and permeability) from Excel files for wells `15-9-19-A` and `15-9-19-BT2`. The core data was carefully depth-matched and merged with the log data.
+*   **Core Data Integration**: Imported Routine Core Analysis (RCA) data (porosity and permeability) from Excel files for wells `15-9-19-A` and `15-9-19-BT2`. The core data was depth-matched and merged with the log data.
 *   **Facies Data Integration**: Processed and merged lithofacies interpretations from Excel files to provide geological context.
 *   **Project Creation**: All consolidated data was saved into a single `quick-pp` project file (`VOLVE.qppp`), ensuring streamlined and consistent data access for all subsequent analysis steps.
 
@@ -81,7 +81,7 @@ This notebook estimates water saturation (`SWT`), a critical parameter for quant
 *   **Parameter Estimation**:
     *   **Formation Water Resistivity (Rw)**: Estimated based on a formation water salinity of 37,000 ppm.
     *   **Cementation Factor (m)**: A **Pickett plot** was used to determine the appropriate cementation factor, which was found to be **1.9**.
-*   **Calculation**: The `normalized_waxman_smits_saturation` function was used to compute a continuous water saturation curve. The results were then compared against the Archie and Waxman-Smits.
+*   **Calculation**: The `normalized_waxman_smits_saturation` function was used to compute a continuous water saturation curve. The results were compared against the Archie and Waxman-Smits.
 
     ![SWT comparison](static/swt_result.png)
 
@@ -102,7 +102,7 @@ This notebook consolidates all petrophysical calculations to generate a comprehe
 
 This project successfully demonstrates a modern, integrated petrophysical workflow on the public Volve dataset. By combining fundamental petrophysics with machine learning, we developed a robust and consistent reservoir characterization model.
 
-*   **Validated Porosity Model**: The log-derived porosity model was successfully validated against core data, providing a reliable foundation for subsequent calculations.
+*   **Validated Porosity Model**: The log-derived porosity model was validated against core data, providing a reliable foundation for subsequent calculations.
 *   **Permeability Prediction**: The use of FZI-based rock typing and machine learning proved critical for achieving an accurate permeability prediction. This method effectively captures the geological heterogeneity that controls fluid flow.
 *   **Scalable Workflow**: The methodology allows for the confident propagation of reservoir properties from cored to uncored wells for further analysis and modelling.
 
