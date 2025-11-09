@@ -1,4 +1,4 @@
-# ~Work in Progress~
+# _Work in Progress_
 
 # Petrophysical Analysis of Block 2/5 (North Sea, UK)
 
@@ -11,6 +11,10 @@ This project presents a comprehensive petrophysical analysis of a well from the 
 Block 2/5, located in the UK's East Shetland Basin, is geologically significant as the site of the Heather oil field. Its foundation is the Heather Terrace, a large, tilted fault block on the western margin of the Viking Graben. This structure was created by intense rifting during the Jurassic period, which faulted and tilted the rock layers, forming a perfect structural trap for migrating oil and gas.
 
 The block's success as a hydrocarbon province stems from a classic petroleum system. The source rock is the organic-rich Upper Jurassic Kimmeridge Clay Formation, which generated hydrocarbons after being subjected to heat and pressure. These hydrocarbons migrated into the porous sandstones of the Middle Jurassic Heather Formation, the primary reservoir. This accumulation was then contained by an impermeable cap rock of younger Cretaceous mudstones, which prevented the oil and gas from escaping.
+
+The exploration campaign of UK Block 2/5 began in 1973 with the 2/5-1 wildcat, which was the Heather Field discovery well, finding oil in the Middle Jurassic Brent Group. This was immediately followed by a 1974 appraisal program: 2/5-2 successfully confirmed the discovery, but 2/5-3 was a dry hole that critically defined the field's water contact. 2/5-4 successfully appraised the crest of the structure, confirming a significant oil column.
+
+After this initial success, the focus shifted to understanding the field's complex, faulted nature. Later appraisal wells, including 2/5-6 and 2/5-7, were drilled to delineate these separate fault blocks. Well 2/5-6 was key to defining the "North Terrace" of the field, while 2/5-7 was drilled to appraise the "Southwest Heather" area. The results from 2/5-7 were particularly important, as they proved this area had a different oil source, confirming the field was highly compartmentalized. In short, from initial discovery (1), to confirmation (2, 4), finding the limits (3), and finally, delineating the complex internal fault blocks (6, 7).
 
 ### Analysis Workflow
 
@@ -97,13 +101,13 @@ The final notebook consolidates all calculated results into a comprehensive rese
 *   **Pay Summary (Cutoffs)**: Reservoir pay is quantified by applying petrophysical cutoffs for VCLAY, PHIT, and SWT. This process identifies the net reservoir and net pay intervals.
     ![Reservoir Summary](static/2-5_ressum.png)
 
-*   **Log Plot Generation**: A final, interactive log plot is generated using `quick-pp`. This plot displays key input logs and calculated curves (VCLAY, PHIT, SWT, PERM), along with core data. Below is an result example from one of the analysed wells:
-    ![2/5 7 Result](static/2-5-7_result_plot.png)
+*   **Log Plot Generation**: A final, interactive log plot is generated using `quick-pp`. This plot displays key input logs and calculated curves (VCLAY, PHIT, SWT, PERM), along with core data. 
 
-    Stick plot focusing on the Tor formation:
-    ![2/5 Stick Plot](static/2-5_Tor_stickplot.png)
+### 6. Overal Results
 
-### 6. Conclusion
+
+
+### 7. Conclusion
 
 This work demonstrates an end-to-end petrophysical workflow;
 
