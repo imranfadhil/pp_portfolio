@@ -79,7 +79,7 @@ This notebook estimates water saturation (`SWT`), a critical parameter for quant
 
 *   **Methodology**: The water saturation was calculated using the **Normalized Waxman-Smits equation**, a fundamental model for shaly sand formations.
 *   **Parameter Estimation**:
-    *   **Formation Water Resistivity (Rw)**: Estimated based on a formation water salinity of 37,000 ppm.
+    *   **Formation Water Resistivity (Rw)**: Estimated based on a formation water salinity of 150,000 ppm as reported by Jules Metsebo in "Comparison Study between Different Methods Used in the Estimation of Reserves in well F-12 of Volve Field", January 2022, Journal of Ecology & Natural Resources.
     *   **Cementation Factor (m)**: A **Pickett plot** was used to determine the appropriate cementation factor, which was found to be **1.9**.
 *   **Calculation**: The `normalized_waxman_smits_saturation` function was used to compute a continuous water saturation curve. The results were compared against the Archie and Waxman-Smits.
 
@@ -94,9 +94,23 @@ This notebook consolidates all petrophysical calculations to generate a comprehe
 *   **Final Log Plots**: Comprehensive log plots were generated for each well using `plotly_log`, visualizing all the key input and calculated curves (GR, Resistivity, NPHI, RHOB, Porosity, Permeability, Saturation, and Lithology). These plots provide a final, integrated view of the reservoir characterization and were saved as interactive HTML files.
 *   **Cross-Well QA/QC**: Finally, a `quick_compare` plot was generated to visually inspect the consistency of the key logs across all wells, ensuring a high level of confidence in the final interpretation.
 
-![15-9-19-BT2 Result](static/15-9-19-BT2_result.gif)
+### Overall Results
+![Hugin Pay Ressum](static/hugin_pay_ressum.png)
 
-*Result example from one of the analysed wells: 15-9-19-BT2*
+#### 15-9-19-SR (May 1993)
+The result indicates Hugin is a good quality reservoir (net 17 meters TVD thick) with average PHIT of 0.23 and PERM 1.7 Darcy. The average SWT is 0.16 which was tested flowing 4300 bopd with GOR of 550 scf/bbl at 12.7mm choke.
+
+![15-9-19-A Result](static/15-9-19-SR_Result_Interpretation.png)
+
+#### 15-9-19-A (Nov 1997)
+The Hugin formation is thicker in this well (net 112 meters TVD thick) with average PHIT of 0.20 and PERM 1 Darcy. The reservoir contains oil with average SWT of 0.35 which was tested flowing 3300 bopd with GOR of 500 scf/bbl at 38/64" choke.
+
+![15-9-19-A Result](static/15-9-19-A_Result_Interpretation.png)
+
+#### 15-9-19-BT2 (Feb 1998)
+The Hugin formation in this well is water bearing (with shows) and no test was performed. No fluid sample was taken but FMT measurements confirmed a water gradient (0.473 psi/ft). The reservoir quality is still the same (net 112 meters TVD thick) with average PHIT of 0.20 and PERM 1 Darcy.
+The Hugin formation is water bearing. Low water 
+![15-9-19-BT2 Result](static/15-9-19-BT2_Result_Interpretation.png)
 
 ### Key Insights and Conclusion
 
