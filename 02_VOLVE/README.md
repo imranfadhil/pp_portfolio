@@ -95,6 +95,8 @@ This notebook consolidates all petrophysical calculations to generate a comprehe
 *   **Cross-Well QA/QC**: Finally, a `quick_compare` plot was generated to visually inspect the consistency of the key logs across all wells, ensuring a high level of confidence in the final interpretation.
 
 ### Overall Results
+The analysis of the initial three wells provides a clear picture of the Hugin Formation reservoir. The discovery well, 15/9-19-SR, confirmed a high-quality, oil-bearing sandstone. The subsequent appraisal wells successfully delineated the accumulation: 15/9-19-A encountered a significantly thicker oil column with similar excellent reservoir properties, while the 15/9-19-BT2 sidetrack penetrated the same high-quality reservoir in the water leg, effectively defining the downdip extent of the oil accumulation.
+
 ![Hugin Pay Ressum](static/hugin_pay_ressum.png)
 
 #### 15-9-19-SR (May 1993)
@@ -108,8 +110,8 @@ The Hugin formation is thicker in this well (net 112 meters TVD thick) with aver
 ![15-9-19-A Result](static/15-9-19-A_Result_Interpretation.png)
 
 #### 15-9-19-BT2 (Feb 1998)
-The Hugin formation in this well is water bearing (with shows) and no test was performed. No fluid sample was taken but FMT measurements confirmed a water gradient (0.473 psi/ft). The reservoir quality is still the same (net 112 meters TVD thick) with average PHIT of 0.20 and PERM 1 Darcy.
-The Hugin formation is water bearing. Low water 
+The Hugin formation in this well is water-bearing, confirmed by FMT pressure gradients (0.473 psi/ft). Reservoir quality is excellent, with a net thickness of 112 meters (TVD), average PHIT of 0.20, and permeability of 1 Darcy. The calculated water saturation (SWT) curve exhibits sharp, low spikes; these are interpreted as calculation artifacts caused by minor depth mismatches between density and resistivity logs over thin, tight streaks, not as hydrocarbon indications.
+
 ![15-9-19-BT2 Result](static/15-9-19-BT2_Result_Interpretation.png)
 
 ### Key Insights and Conclusion
