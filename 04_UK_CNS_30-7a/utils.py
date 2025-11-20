@@ -146,7 +146,7 @@ def plot_ptsd_by_prt(df, ift, theta, no_of_rocks=5):
     fig.set_facecolor("aliceblue")
     plt.tight_layout()
 
-    processed_df.to_excel("ptsd.xlsx")
+    processed_df.to_excel(r"data/ptsd.xlsx")
     return processed_df
 
 
@@ -215,7 +215,6 @@ def plot_j_by_prt(df, mapped_fzi_params, ymax=10):
             data["J"],
             a=a,
             b=b,
-            core_group=data["SampleID"],
             label=f"a:{a}\nb:{b}",
             ax=ax,
             ylim=(0, ymax),
