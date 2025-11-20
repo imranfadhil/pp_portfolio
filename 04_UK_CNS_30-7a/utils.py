@@ -2,9 +2,10 @@ import pandas as pd
 import hashlib
 import matplotlib.pyplot as plt
 import numpy as np
+from sklearn.metrics import root_mean_squared_error
 
 from quick_pp.rock_type import estimate_pore_throat
-from quick_pp.core_calibration import j_xplot
+from quick_pp.core_calibration import j_xplot, fit_j_curve
 
 
 def restructure_scal_data(df_wide):
@@ -69,6 +70,23 @@ def string_to_int_hash(s):
     hash_obj = hashlib.sha256(s.encode("utf-8"))
     # Convert first 8 bytes to integer (fits in 64-bit)
     return int.from_bytes(hash_obj.digest()[:4], "big", signed=False)
+
+
+def auto_j_params(df, excluded_samples=[]):
+    copy_df = df.copy()
+    copy_df = copy_df[~copy_df["Sample"].isin(excluded_samples)]
+    j_params = {}
+    for rt, data in copy_df.groupby("ROCK_FLAG"):
+        a, b = fit_j_curve(data["SWN"], data["J"])
+        rmse = round(root_mean_squared_error(data["J"], a * data["SWN"] ** b), 4)
+        j_params[rt] = {
+            "ROCK_FLAG": rt,
+            "a": round(a, 4),
+            "b": round(b, 4),
+            "rmse": rmse,
+        }
+
+    return j_params
 
 
 def plot_ptsd_by_prt(df, ift, theta, no_of_rocks=5):
@@ -183,12 +201,11 @@ def plot_j_by_prt(df, mapped_fzi_params, ymax=10):
 
     # Plot j_xplot for each rock flag
     for i in range(len(unique_rock_flags)):
-        int_rock = i + 1
-        rock = str(float(i + 1))
+        rock = i + 1
         if rock not in mapped_fzi_params:
             continue
         ax = axes[i]
-        data = core_data[core_data["ROCK_FLAG"] == int_rock]
+        data = core_data[core_data["ROCK_FLAG"] == rock]
         (
             a,
             b,
@@ -203,7 +220,7 @@ def plot_j_by_prt(df, mapped_fzi_params, ymax=10):
             ax=ax,
             ylim=(0, ymax),
         )
-        ax.set_title(f"RRT {int_rock}")
+        ax.set_title(f"RRT {rock}")
         ax.legend()
         ax.grid(True)
 
