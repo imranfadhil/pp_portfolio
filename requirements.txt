@@ -8,7 +8,7 @@ numpy==1.25.2
 openpyxl==3.1.5
 plotly==6.1.1
 python-dotenv==1.0.0
-quick-pp==0.2.102
+quick-pp==0.2.105
 seaborn==0.11.2
 xlrd==2.0.2
 ydata-profiling==4.9.0
