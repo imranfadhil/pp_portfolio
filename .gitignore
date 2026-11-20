@@ -6,6 +6,8 @@
 **/data/*.pdf
 **/outputs/**
 **/quick_pp.db*
+uploads/*
+archive/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
